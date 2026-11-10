@@ -5,7 +5,7 @@ set -euo pipefail
 echo "==> Installing gcc, gdb, netcat, python3"
 sudo apt-get update -qq
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
-  build-essential gdb netcat-openbsd python3 python3-pip python3-venv file \
+  build-essential gdb gdbserver tmux netcat-openbsd python3 python3-pip python3-venv file \
   >/dev/null
 
 echo "==> Installing pwntools"

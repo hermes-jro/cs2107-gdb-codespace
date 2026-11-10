@@ -41,6 +41,14 @@ pwndbg vuln
 ## 3. Assignment 2 challenge files
 
 - **Downloadable challenges (e.g. E.1):** drag the file from your computer into the file explorer on the left. To download results, right-click a file → **Download…**
+- **Uploaded binaries lose their execute permission.** Run `chmod +x ./<binary>` before `./<binary>` or `gdb ./<binary>`.
+- **pwntools with GDB:** `gdb.debug()` and `gdb.attach()` open GDB in a split pane, so run your script inside `tmux` and add this line near the top:
+
+  ```python
+  context.terminal = ['tmux', 'splitw', '-h']
+  ```
+
+  Then run `tmux` in the terminal, followed by `python3 solve.py`. Plain `process('./binary')` doesn't need any of this.
 - **Network challenges:** the CTFd tunnel still runs **on your own laptop**, as in the Assignment 2 PDF. The codespace is on GitHub's servers, so it can't reach `127.0.0.1:35xxx` on your laptop. Debug the binary locally in the codespace, then send your final exploit from your laptop through the tunnel.
 - **Do not upload `ctfd_tunnel_key` to the codespace or to GitHub.** It's a shared course credential. `.gitignore` blocks it from commits, but don't copy it in at all.
 - If you fork this repo to save your work, **make the fork private**. Don't push challenge files, solutions or flags to a public repo.
@@ -72,7 +80,7 @@ pwndbg vuln
 - `"capAdd": ["SYS_PTRACE"]` lets GDB trace programs, including attaching with `gdb -p`.
 - `"securityOpt": ["seccomp=unconfined"]` lets GDB turn off address randomisation, so addresses match between runs.
 
-`.devcontainer/setup.sh` installs gcc, gdb, Pwndbg (`pwndbg` command), pwntools and netcat, then builds `demo/login`.
+`.devcontainer/setup.sh` installs gcc, gdb, gdbserver, Pwndbg (`pwndbg` command), pwntools, tmux and netcat, then builds `demo/login`.
 
 ### Alternative: run on your own machine
 
