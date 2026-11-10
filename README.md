@@ -40,14 +40,21 @@ pwndbg vuln
 
 ## 3. Assignment 2 challenge files
 
-`challenges/m3/` already contains the M.3 *Addressed to You* player files, the same ones as `dist-addressed-to-you.zip` on CTFd. Its `flag.txt` is a local placeholder, so get the real flag from the hosted service. To try it:
+`challenges/` already contains the player files for the two pwn challenges, the same files you download from CTFd:
+
+| Folder | Challenge | Binary |
+|---|---|---|
+| `challenges/e3/` | E.3 *Too Much to Say* | `overflow` (no PIE, no canary) |
+| `challenges/m3/` | M.3 *Addressed to You* | `addressed-to-you` (PIE) |
+
+Each `flag.txt` is a local placeholder, so get the real flag from the hosted service. To try one:
 
 ```
-cd challenges/m3
-pwndbg ./addressed-to-you
+cd challenges/e3
+pwndbg ./overflow
 ```
 
-GDB turns off address randomisation, so the binary loads at the same address every run. The hosted service doesn't, so don't hard-code addresses you see in GDB.
+M.3 is PIE. GDB turns off address randomisation, so it loads at the same address every run, but the hosted service doesn't. Don't hard-code addresses you see in GDB.
 
 
 For other challenges:
