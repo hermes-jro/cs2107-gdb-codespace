@@ -40,6 +40,18 @@ pwndbg vuln
 
 ## 3. Assignment 2 challenge files
 
+`challenges/m3/` already contains the M.3 *Addressed to You* player files, the same ones as `dist-addressed-to-you.zip` on CTFd. Its `flag.txt` is a local placeholder, so get the real flag from the hosted service. To try it:
+
+```
+cd challenges/m3
+pwndbg ./addressed-to-you
+```
+
+GDB turns off address randomisation, so the binary loads at the same address every run. The hosted service doesn't, so don't hard-code addresses you see in GDB.
+
+
+For other challenges:
+
 - **Downloadable challenges (e.g. E.1):** drag the file from your computer into the file explorer on the left. To download results, right-click a file → **Download…**
 - **Uploaded binaries lose their execute permission.** Run `chmod +x ./<binary>` before `./<binary>` or `gdb ./<binary>`.
 - **pwntools with GDB:** `gdb.debug()` and `gdb.attach()` open GDB in a split pane, so run your script inside `tmux` and add this line near the top:
