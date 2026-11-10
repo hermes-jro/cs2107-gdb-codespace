@@ -1,0 +1,12 @@
+{
+  "name": "CS2107 GDB (x86-64 Ubuntu)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "capAdd": ["SYS_PTRACE"],
+  "securityOpt": ["seccomp=unconfined"],
+  "hostRequirements": { "cpus": 2 },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": { "extensions": ["ms-vscode.cpptools"] },
+    "codespaces": { "openFiles": ["README.md"] }
+  }
+}

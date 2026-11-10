@@ -1,0 +1,9 @@
+# Course credential: never commit
+ctfd_tunnel_key
+*_key
+*.pem
+
+# Challenge files and build output
+flag.txt
+demo/login
+core*
